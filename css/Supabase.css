@@ -1,0 +1,28 @@
+﻿<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  const supabase = supabase.createClient('https://bbdbjoobbndpzmuejcxe.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJiZGJqb29iYm5kcHptdWVqY3hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgzMTMwMTUsImV4cCI6MjA2Mzg4OTAxNX0.WTYNhPZPZ0fvFwInPZXVaan0adg9Soty_SUYJDXz5jk');
+
+  async function signUp(email, password) {
+    const { user, error } = await supabase.auth.signUp({
+      email: email,
+      password: password
+    });
+    if (error) {
+      alert(error.message);
+    } else {
+      alert('注册成功！请验证邮箱。');
+    }
+  }
+
+  async function signIn(email, password) {
+    const { user, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+    if (error) {
+      alert(error.message);
+    } else {
+      alert('登录成功！');
+    }
+  }
+</script>
